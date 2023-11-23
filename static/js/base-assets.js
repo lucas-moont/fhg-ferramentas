@@ -433,11 +433,13 @@ if(screen.width < 500){
   })
   slideImgArray.forEach((item, index) => {
     if(index == 0){
-      item.src = 'https://savvi.com.br/wp-content/uploads/2023/02/MOBILEBanner01-min.jpg'
+      item.src = 'https://savvi.com.br/wp-content/uploads/2023/11/Banner-1-Mobile.jpg'
     }else if(index == 1){
-      item.src = 'https://savvi.com.br/wp-content/uploads/2023/02/MOBILEBanner02-min.jpg'
+      item.src = 'https://savvi.com.br/wp-content/uploads/2023/11/Banner-2-Mobile.jpg'
     }else if(index == 2){
-      item.src = 'https://savvi.com.br/wp-content/uploads/2023/02/MOBILEBanner03-min.jpg'
+      item.src = 'https://savvi.com.br/wp-content/uploads/2023/11/Banner-3-Mobile.jpg'
+    }else if(index == 3){
+      item.src = 'https://savvi.com.br/wp-content/uploads/2023/11/Banner-4-Mobile.jpg'
     }
   })
 }

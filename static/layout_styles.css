@@ -3802,3 +3802,12 @@ h1.ui-search-breadcrumb__title,
   border-radius: 32px;
   margin-bottom: 32px;
 }
+
+div.mshops-recommendations-wrapper .carousel-with-tabs-mobile__list{
+  gap: 0 !important
+}
+
+.hub__boxed-width{
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+}

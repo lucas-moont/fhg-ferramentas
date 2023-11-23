@@ -3338,6 +3338,7 @@ header .nav-tools-header__top{
   border: 0;
   font-weight: 500;
   cursor: pointer;
+  border-radius: 25px;  
 }
 
 .customContactBtnLink:hover .customFloatContact{
@@ -3402,11 +3403,16 @@ header .nav-tools-header__top{
   margin-top: -4px;
 }
 
+.icoContact{
+  width: 25px;
+}
+
 .customDesktopSearchCol{
   background-color: var(--white);
   display: inline-flex;
   align-items: center;
   width: 40%;
+  border-radius: 25px;
 }
 
 .customDesktopSearchCol form{
@@ -3419,6 +3425,7 @@ header .nav-tools-header__top{
   padding: 8px 6px;
   border: 0;
   width: calc(100% - 35px);
+  border-radius: 25px;
 }
 
 .customDesktopSearchCol #customSearchInput:focus{
@@ -3675,7 +3682,8 @@ body{
   cursor: pointer;
   position: absolute;
   z-index: 8;
-  top: calc(50% - 17px - 50.5px)
+  top: calc(50% - 17px - 50.5px);
+  display: none; /*OCULTANDO BOTÃO DO SLIDE*/
 }
 
 .slideReturn{
@@ -3722,6 +3730,10 @@ body{
   z-index: 2;
 }
 
+.component-wrapper:nth-of-type(7) .section__sub-header{
+  display: none !important;
+}
+
 @media (max-width: 800px){
   .customMobile{
     display: block;
@@ -3752,7 +3764,7 @@ body{
 
 .slider,
 .customTutorialDesktop{
-  display: none;
+  display: block;
 }
 
 /*PÁGINA DE PESQUISA*/
@@ -3789,4 +3801,13 @@ h1.ui-search-breadcrumb__title,
 .ui-pdp--relative{
   border-radius: 32px;
   margin-bottom: 32px;
+}
+
+div.mshops-recommendations-wrapper .carousel-with-tabs-mobile__list{
+  gap: 0 !important
+}
+
+.hub__boxed-width{
+  max-width: 1200px !important;
+  margin: 0 auto !important;
 }

@@ -3666,6 +3666,7 @@ body{
   position: relative;
   z-index: 3;
   background-color: var(--darkBlue);
+  display: none;
 }
 
 .sliderInner{
@@ -3764,7 +3765,7 @@ body{
 
 .slider,
 .customTutorialDesktop{
-  display: block;
+  display: none;
 }
 
 /*PÁGINA DE PESQUISA*/

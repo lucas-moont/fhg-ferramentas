@@ -3812,3 +3812,24 @@ div.mshops-recommendations-wrapper .carousel-with-tabs-mobile__list{
   max-width: 1200px !important;
   margin: 0 auto !important;
 }
+
+/*CORREÇÃO DE BUG FRETE DESALINHADO*/
+
+div.home.home--legend .ui-item__shipping.ui-item__shipping-free{
+  border: 0;
+  background-color: #fff !important;
+  border: 1px solid rgba(51,51,51,.1);
+  border-radius: 50% !important;
+  height: 36px !important;
+  position: absolute !important;
+  right: 16px !important;
+  top: -18px !important;
+  width: 36px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  z-index: 3000;
+}
+
+.ui-item__discount-box{
+  display: none !important;
+}

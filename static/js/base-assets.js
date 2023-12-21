@@ -334,84 +334,66 @@ formPrevent.forEach(item => {
 //SLIDE
 
 let currentSlide = 0;
-let bulletSlider = document.createElement("span")
-bulletSlider.classList.add('sliderBullet')
-let myInterval
+let myInterval;
+const slideInterval = 4000; // Intervalo de mudança de slide em milissegundos
 
-let sliderItems = document.querySelectorAll('.sliderItem')
-let sliderInner = document.querySelector('.sliderInner')
-sliderInner.style.width = `calc(100vw * ${sliderItems.length})`
+const sliderItems = document.querySelectorAll('.sliderItem');
+const sliderInner = document.querySelector('.sliderInner');
+const sliderBulletsContainer = document.querySelector('.sliderBottom');
 
-function goBack(){
-    let sliderBulletSpan = document.querySelectorAll('.sliderBullet')
+sliderInner.style.width = `calc(100vw * ${sliderItems.length})`;
+
+function goToSlide(slideIndex) {
+    currentSlide = slideIndex;
+    updateSlide();
+    clearInterval(myInterval); // Limpa o intervalo antes de configurar novamente
+    myInterval = setInterval(goNext, slideInterval);
+}
+
+function updateSlide() {
+    sliderInner.style.marginLeft = `-${currentSlide * 100}vw`;
+    const sliderBulletSpan = document.querySelectorAll('.sliderBullet');
+    sliderBulletSpan.forEach((slide, slideIndex) => {
+        slide.classList.remove('selected');
+    });
+    sliderBulletSpan[currentSlide].classList.add('selected');
+}
+
+function createBulletSlider() {
+    for (let i = 0; i < sliderItems.length; i++) {
+        const bulletSlider = document.createElement("span");
+        bulletSlider.classList.add('sliderBullet');
+        bulletSlider.addEventListener('click', () => {
+            goToSlide(i);
+        });
+        sliderBulletsContainer.appendChild(bulletSlider);
+    }
+    document.querySelectorAll('.sliderBullet')[0].classList.add('selected');
+}
+
+function goBack() {
     currentSlide--;
-    if (currentSlide < 0){
-        currentSlide = sliderItems.length - 1
+    if (currentSlide < 0) {
+        currentSlide = sliderItems.length - 1;
     }
-    sliderBulletSpan.forEach((slide, slideIndex) => {
-        slide.classList.remove('selected')
-        sliderBulletSpan[currentSlide].classList.add('selected')
-    })
-
-    clearInterval(myInterval)
-    updateMargin()
-    setTimeout(() => {
-        myInterval = setInterval(goNext, 4000)
-    }, 500);
+    goToSlide(currentSlide);
 }
 
-function goNext(){
-    currentSlide++
-    let sliderBulletSpan = document.querySelectorAll('.sliderBullet')
-    if(currentSlide > (sliderItems.length - 1)){
-        currentSlide = 0
+function goNext() {
+    currentSlide++;
+    if (currentSlide > sliderItems.length - 1) {
+        currentSlide = 0;
     }
-    sliderBulletSpan.forEach((slide, slideIndex) => {
-        slide.classList.remove('selected')
-        sliderBulletSpan[currentSlide].classList.add('selected')
-    })
-    clearInterval(myInterval)
-    updateMargin()
-    setTimeout(() => {
-        myInterval = setInterval(goNext, 4000)
-    }, 500);
+    goToSlide(currentSlide);
 }
 
-function updateMargin(){
-    let newMargin = (currentSlide * 100)
-    sliderInner.style.marginLeft = `-${newMargin}vw`
-}
+createBulletSlider();
+myInterval = setInterval(goNext, slideInterval);
 
-function createBulletSlider(){
-    for(var i = 0; i < sliderItems.length; i++){
-        document.querySelector('.sliderBottom').appendChild(bulletSlider.cloneNode(true))
-        console.log
-    }
-    document.querySelectorAll('.sliderBullet').forEach((bullet, bulletIndex) => {
-        bullet.addEventListener('click', () => {
-            currentSlide = bulletIndex
-            document.querySelectorAll('.sliderBullet').forEach((slide, slideIndex) => {
-                slide.classList.remove('selected')
-                document.querySelectorAll('.sliderBullet')[currentSlide].classList.add('selected')
-            })
-            clearInterval(myInterval)
-            updateMargin()
-            setTimeout(() => {
-                myInterval = setInterval(goNext, 4000)
-            }, 4000);
-        })
-    })
-    document.querySelectorAll('.sliderBullet')[0].classList.add('selected')
-}
+document.querySelector('.slideReturn').addEventListener('click', goBack);
+document.querySelector('.slideForward').addEventListener('click', goNext);
 
-createBulletSlider()
-myInterval = setInterval(goNext, 4000)
 
-let btnSlideForward = document.querySelector('.slideForward')
-let btnSlideBack = document.querySelector('.slideReturn')
-
-btnSlideBack.addEventListener('click', goBack)
-btnSlideForward.addEventListener('click', goNext)
 
 /*RETIRA O SLIDE E A SEÇÃO DE PAGAMENTO DE OUTRAS PÁGINAS*/
 
